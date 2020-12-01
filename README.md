@@ -139,10 +139,6 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 - The ls -a is a could command to check the directory your in for error handling
 - We need to cd into our app folder and run the tests on it to check its running
 
-#### Post-Build Action
-- Select git publisher and tick push only if build succeeds. This will only make changes to the dev branches if the tests of the app pass.
-
-![](img/push_if_build_succeeds.png)
 
 - Finally click save and the item should show up on the dashboard.
 
@@ -168,7 +164,12 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/additionalbehaviours.png)
 
-- Link the git with a hook trigger
+#### Build Triggers
+- We only want to merge to main if the tests of our other job pass
+- Tick build after other jobs are built, and type in the name of our first job and tick trigger only if other build stable.
+
+![](img/buildafterotherbuild.png)
+
 - We dont need anything from build environment or build
 
 #### Post Build actions
@@ -274,6 +275,4 @@ sudo systemctl status <package>
 - `git branch` was used to view branches
 - `git branch -d <old branch>` was used to delete the local branch once its changes had been pushed and merged to main
 
-
-This is another line to show that my merge jenkins job works
 
