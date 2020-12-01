@@ -245,4 +245,9 @@ sudo systemctl status <package>
 
 
 
-This is a change to the read me on dev-changes_to_readme branch
+#### This is a change to the read me on dev-changes_to_readme branch
+
+- `git checkout -b <new branch>` was used to create a new branch
+- `git branch` was used to view branches
+- `git branch -d <old branch>` was used to delete the local branch once its changes had been pushed and merged to main
+
