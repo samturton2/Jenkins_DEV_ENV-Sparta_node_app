@@ -92,7 +92,8 @@ bundler
 ```bash
 rake spec:app
 ```
-- This should return 14 passing tests, if the app is set up correctly.
+- This should return 18 passing tests, if the app is set up correctly.
+- If the versions are incorrect, (max 4 failures), you can ignore it for now.
 
 ##### db virtual environment
 ```bash
