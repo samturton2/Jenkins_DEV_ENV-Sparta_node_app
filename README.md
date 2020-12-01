@@ -232,5 +232,4 @@ sudo systemctl status <package>
 
 - If Type Error with the `vagrant-hostsupdater`, still finding a fix, but for now can # out the `config.vm.hostname = "www.` line in the Vagrantfile. Can then enter the app by typing the ip address in the url.
 This is a change to the Readme, to trigger webhook
-\n This is a second change to the Readme, to trigger webhook, so we can run npm test
-
+\n This is a second change to the Readme, to trigger webhook, so we can run npm test.
