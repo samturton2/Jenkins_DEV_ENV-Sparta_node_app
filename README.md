@@ -84,6 +84,17 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/office365connector.png)
 
+##### Connecting to microsoft teams
+- In office 365 connector click add webhook
+- Then the microsoft teams channel you want to connect to click the options bar, and connectors, and click configure jenkins
+- Enter a name for your jenkins connector and copy the url it gives you.
+
+![](img/teams_jenkins.png)
+
+- In jenkins paste the url for notification webhooks and name the connection again.
+
+![](img/teams_webhook.png)
+
 #### Source Code Management
 - This is the stage we will generate our ssh keys if you haven't already.
 ###### getting a key
