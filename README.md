@@ -53,85 +53,6 @@ vagrant up
 
 ![](img/port3000.png)
 
-#### Behind the scenes
-- Vagrant up should run the the provision.sh files in both the db and the app folders in the environment folder
-
-##### app provision.sh
-- In this file we can see all shell commands to install the packages necessary to running this app in the app VM. 
-- Before starting the app we use our bash commands to declare the environment variable `DB_HOST` to direct the app to the db ip address and link the two
-- If you open the vagrant file in the main directory, you should see the `config.vm.provision` command (line 17)  telling the programme to run the provision installation commands once the virtual environment is up and running.
-- The final paragraph in the provision file are the commands to run the app, as you open the VM. Can # it out and enter manually if you dont want the app to run instantly.
-- line 30 - 35 is the process of syncing a reverse proxy file so that the app can run when the alias is typed straight into the url
-
-##### db provision.sh
-- In this file we can see all shell commands to install the packages necessary
-for running a MongoDB in the db virtual machine
-- If you open the vagrant file in the main directory, you should see the config.vm.provision command (line 17) telling the programme to run the provision installation commands once the virtual environment is up and running.
-- In the vagrant file, notice the line which syncs a config folder to the VM. This folder has a copy of the mongo config file with the bing IP address changed manually to 0.0.0.0. In the provision file (before the mongodb is started), it commands the vm to copy and replace the config file with my manually edited one, so the IP address is changed accordingly. The perpose of this is so the app can read the db from any ip address.
-
-## Testing
-- Open a new terminal whilst the virtual environment is still running.
-- To install gems from the gemfile run
-```bash
-bundle install
-```
-- Install the gem bundler
-```bash
-gem install bundler
-```
-- `cd` into the directory of the `Rakefile` which should be in the `tests` folder. e.g  `cd ./tests`
-
-- Run this command to install the tests
-```bash
-bundler
-```
-
-- Run these commands to test the environments have all the packages needed
-
-##### app virtual environment
-```bash
-rake spec:app
-```
-- This should return 18 passing tests, if the app is set up correctly.
-- If the versions are incorrect, (max 4 failures), you can ignore it for now.
-
-##### db virtual environment
-```bash
-rake spec:db
-```
-- All the tests should pass if mongodb is running in the correct place
-
-## Extra commands
-- To exit the running environment
-```bash
-exit
-```
-
-- To destroy the Virtual Machine once exited. (`vagrant up` to start running one again)
-```bash
-vagrant destroy
-```
-
-- To suspend the Virtual Machine
-```bash
-vagrant suspend
-```
-
-- To resume the VM once suspended 
-```bash
-vagrant resume
-```
-
-- To check the status of any `<package>` you should have in your VM. Enter this command in your VM terminal
-```bash
-sudo systemctl status <package>
-```
-
-- If for any reasons the `provision.sh` file commands havent ran and the relevant packages arent installed in the VM, copy the commands from the `provision.sh` file and manually paste them in the VM, and run the testing again.
-
-- If Type Error with the `vagrant-hostsupdater`, still finding a fix, but for now can # out the `config.vm.hostname = "www.` line in the Vagrantfile. Can then enter the app by typing the ip address in the url.
-This is a change to the Readme, to trigger webhook
-\n This is a second change to the Readme, to trigger webhook, so we can run npm test
 
 
 # Continuous Intergration with Jenkins
@@ -215,3 +136,85 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 ![](img/consoleoutput.png)
 
 - Here we can see if any tests have failed, and make the checges necessesary which should then be triggered by the webhook
+
+# Behind the scenes, terminal tests, extra commands
+## Behind the scenes
+- Vagrant up should run the the provision.sh files in both the db and the app folders in the environment folder
+
+#### app provision.sh
+- In this file we can see all shell commands to install the packages necessary to running this app in the app VM. 
+- Before starting the app we use our bash commands to declare the environment variable `DB_HOST` to direct the app to the db ip address and link the two
+- If you open the vagrant file in the main directory, you should see the `config.vm.provision` command (line 17)  telling the programme to run the provision installation commands once the virtual environment is up and running.
+- The final paragraph in the provision file are the commands to run the app, as you open the VM. Can # it out and enter manually if you dont want the app to run instantly.
+- line 30 - 35 is the process of syncing a reverse proxy file so that the app can run when the alias is typed straight into the url
+
+#### db provision.sh
+- In this file we can see all shell commands to install the packages necessary
+for running a MongoDB in the db virtual machine
+- If you open the vagrant file in the main directory, you should see the config.vm.provision command (line 17) telling the programme to run the provision installation commands once the virtual environment is up and running.
+- In the vagrant file, notice the line which syncs a config folder to the VM. This folder has a copy of the mongo config file with the bing IP address changed manually to 0.0.0.0. In the provision file (before the mongodb is started), it commands the vm to copy and replace the config file with my manually edited one, so the IP address is changed accordingly. The perpose of this is so the app can read the db from any ip address.
+
+## Testing
+- Open a new terminal whilst the virtual environment is still running.
+- To install gems from the gemfile run
+```bash
+bundle install
+```
+- Install the gem bundler
+```bash
+gem install bundler
+```
+- `cd` into the directory of the `Rakefile` which should be in the `tests` folder. e.g  `cd ./tests`
+
+- Run this command to install the tests
+```bash
+bundler
+```
+
+- Run these commands to test the environments have all the packages needed
+
+##### app virtual environment
+```bash
+rake spec:app
+```
+- This should return 18 passing tests, if the app is set up correctly.
+- If the versions are incorrect, (max 4 failures), you can ignore it for now.
+
+##### db virtual environment
+```bash
+rake spec:db
+```
+- All the tests should pass if mongodb is running in the correct place
+
+## Extra commands
+- To exit the running environment
+```bash
+exit
+```
+
+- To destroy the Virtual Machine once exited. (`vagrant up` to start running one again)
+```bash
+vagrant destroy
+```
+
+- To suspend the Virtual Machine
+```bash
+vagrant suspend
+```
+
+- To resume the VM once suspended 
+```bash
+vagrant resume
+```
+
+- To check the status of any `<package>` you should have in your VM. Enter this command in your VM terminal
+```bash
+sudo systemctl status <package>
+```
+
+- If for any reasons the `provision.sh` file commands havent ran and the relevant packages arent installed in the VM, copy the commands from the `provision.sh` file and manually paste them in the VM, and run the testing again.
+
+- If Type Error with the `vagrant-hostsupdater`, still finding a fix, but for now can # out the `config.vm.hostname = "www.` line in the Vagrantfile. Can then enter the app by typing the ip address in the url.
+This is a change to the Readme, to trigger webhook
+\n This is a second change to the Readme, to trigger webhook, so we can run npm test
+
