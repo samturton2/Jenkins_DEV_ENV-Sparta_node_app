@@ -244,3 +244,10 @@ sudo systemctl status <package>
 - If Type Error with the `vagrant-hostsupdater`, still finding a fix, but for now can # out the `config.vm.hostname = "www.` line in the Vagrantfile. Can then enter the app by typing the ip address in the url.
 
 
+
+#### This is a change to the read me on dev-changes_to_readme branch
+
+- `git checkout -b <new branch>` was used to create a new branch
+- `git branch` was used to view branches
+- `git branch -d <old branch>` was used to delete the local branch once its changes had been pushed and merged to main
+
