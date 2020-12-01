@@ -187,6 +187,16 @@ rake spec:db
 - All the tests should pass if mongodb is running in the correct place
 
 ## Extra commands
+- Whilst in the app vm, you can stop the app using
+```bash
+pm2 stop app
+```
+
+- Start it again having `cd home/ubuntu/app`
+```bash
+pm2 start app.js
+```
+
 - To exit the running environment
 ```bash
 exit
