@@ -66,7 +66,7 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/login.png)
 
-## New Item
+## New Item for pushing to git branch
 - Now we need to set up a new item that is connected to our repo with an ssh key and a webhook, so that it can continously check for updates.
 - Click on new item (top left, enter your name and choose a freestyle project fr now)
 
@@ -115,8 +115,7 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/addcredentials.png)
 
-- In branched to build make sure its selected as your master or main branch depending on your repo.
-- If we want to keep track of builds to the branches off main (which we would do in a larger project) we need to add a branch to keep track of.
+- If we want to keep track of builds to the branches off main (which we would do in a larger project) we need to add a branch to keep track of. Do this in branch specifier. In my case i have put `*/dev*` to keep track of any branches with dev in the name.
 
 #### Build Triggers
 - We need to select GitHub hook trigger
@@ -140,6 +139,11 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 - The ls -a is a could command to check the directory your in for error handling
 - We need to cd into our app folder and run the tests on it to check its running
 
+#### Post-Build Action
+- Select git publisher and tick push only if build succeeds. This will only make changes to the dev branches if the tests of the app pass.
+
+![](img/push_if_build_succeeds.png)
+
 - Finally click save and the item should show up on the dashboard.
 
 ## Trigger build
@@ -153,6 +157,25 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 ![](img/consoleoutput.png)
 
 - Here we can see if any tests have failed, and make the checges necessesary which should then be triggered by the webhook
+
+## New item for merging to main
+- Create a new item again and name it appropriately, choosing freestyle project.
+- Tick discard old builds
+- Link your github repo
+- Restrict the project to sparta ubuntu node
+- link the git repo ssh urlm and specify the branches to build as the dev branches.
+- Click additional behaviours, and specify origin and push to main
+
+![](img/additionalbehaviours.png)
+
+- Link the git with a hook trigger
+- We dont need anything from build environment or build
+
+#### Post Build actions
+- Click git publisher and tick merge results, to merge to the main once the pre-build merging is complete.
+
+![](img/merge.png)
+
 
 # Behind the scenes, terminal tests, extra commands
 ## Behind the scenes
