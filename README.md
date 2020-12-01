@@ -86,6 +86,7 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 #### Source Code Management
 - This is the stage we will generate our ssh keys if you haven't already.
+###### getting a key
 - In the terminal generate a private and public key pair with the ssh keygen command. e.g  `ssh-keygen -t ed25519`
     - Enter a logical name for the key
     - You dont need a passphrase for now
@@ -95,11 +96,16 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 ![](img/sshkeyclone.png)
 
 - On jenkins, tick git, and past the url into repo url.
-- nder credentials, add a new key, select the kind as ssh, enter a description of the key, tick private key, and copy and paste the private ssh key we generated earlier in here.
+- On credentials, add a new key, select the kind as ssh, enter a description of the key, tick private key, and copy and paste the private ssh key we generated earlier in here.
+
+###### Already have a key
+- Select your existing linked key in credentials
+
 
 ![](img/addcredentials.png)
 
 - In branched to build make sure its selected as your master or main branch depending on your repo.
+- If we want to keep track of builds to the branches off main (which we would do in a larger project) we need to add a branch to keep track of.
 
 #### Build Triggers
 - We need to select GitHub hook trigger
