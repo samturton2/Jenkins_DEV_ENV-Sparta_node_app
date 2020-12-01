@@ -92,7 +92,7 @@ bundler
 ```bash
 rake spec:app
 ```
-- This shoud return at most 4 failures, as long as these failures are the `--version` tests. This is due to the testing programe testing for out of date versions.
+- This should return 14 passing tests, if the app is set up correctly.
 
 ##### db virtual environment
 ```bash
