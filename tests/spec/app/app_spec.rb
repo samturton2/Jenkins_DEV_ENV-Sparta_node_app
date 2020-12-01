@@ -17,9 +17,9 @@ describe package('nodejs') do
   it { should be_installed }
 end
 
-# describe command('nodejs --version') do
-#   its(:stdout) { should match /v6./ }
-# end
+describe command('nodejs --version') do
+  its(:stdout) { should match /v12./ }
+end
 
 describe package('pm2') do
   it { should be_installed.by('npm') }
@@ -29,6 +29,6 @@ describe package('git') do
   it { should be_installed }
 end
 
-# describe command('git --version') do
-#   its(:stdout) { should match /2\.7\../ }
-# end
+describe command('git --version') do
+  its(:stdout) { should match /2\.17\../ }
+end
