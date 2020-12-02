@@ -178,6 +178,10 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 ![](img/merge.png)
 
 
+- If the change on the dev branch has been merged to the main, you should see a message like this on the github main branch.
+
+![](img/mergecomplete.png)
+
 # Behind the scenes, terminal tests, extra commands
 ## Behind the scenes
 - Vagrant up should run the the provision.sh files in both the db and the app folders in the environment folder
