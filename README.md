@@ -182,6 +182,24 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/mergecomplete.png)
 
+
+## New item for continuous deployment
+- For information on the EC2 server head over to the [AWS EC2 repo](https://github.com/samturton2/AWS-EC2server)
+- With both our servers set up and the app running, we can create an item that detects a change to the main branch and deploys it to our cloud server.
+- Set up a new jenkins item as a freestyle project
+- Write a description and connect the url for this repo as the github project.
+- Restrict the project to run on the sparta ubuntu node
+- Connect this git repo with its ssh key and specify the main branch
+- Trigger this to build after the last merging build is stable
+- In the build environment we want to use a secret file, so we can get our ssh key for connecting to the aws server in this jenkins environment.
+  - choose ssh user private key, name it appropriately and add the ssh key using the add tab as shown below.
+
+![](img/secretbindings.png)
+
+
+
+
+
 # Behind the scenes, terminal tests, extra commands
 ## Behind the scenes
 - Vagrant up should run the the provision.sh files in both the db and the app folders in the environment folder
@@ -279,5 +297,3 @@ sudo systemctl status <package>
 - `git branch` was used to view branches
 - `git branch -d <old branch>` was used to delete the local branch once its changes had been pushed and merged to main
 
-
-i
