@@ -196,9 +196,22 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ![](img/secretbindings.png)
 
+- For the build commands we want to execute a shell command.
+  - First we want to copy any changes to the app file into our cloud server. This can be done by setting stricthostkeychecking to no, so that it accepts our aws ssh key straight away.
+  ```bash
+  scp -o "StrictHostKeyChecking=no" -i $<key file variable> -rp app/ ubuntu@54.154.137.16:~/
+  ```
+  - Then we need to go into our aws server and restart the app so the changes load. EOF can be used to submit multiple commands whilst in the server.
+  ```bash
+  ssh -tt -o "StrictHostKeyChecking=no" -i $<key file variable> ubuntu@54.154.137.16 <<EOF
 
+    pm2 restart app
+    exit
+  EOF
+  ```
+- If all works well we can make changes to our sparta app, in the development branch, push it, then see the changes when we look at our app on the url. Here I have changed the sparta logo to a funny gif, and changed the message displayed on the app.
 
-
+![](img/funnyhomepage.png)
 
 # Behind the scenes, terminal tests, extra commands
 ## Behind the scenes
@@ -233,7 +246,6 @@ gem install bundler
 ```bash
 bundler
 ```
-
 - Run these commands to test the environments have all the packages needed
 
 ##### app virtual environment
