@@ -309,3 +309,8 @@ sudo systemctl status <package>
 - `git branch` was used to view branches
 - `git branch -d <old branch>` was used to delete the local branch once its changes had been pushed and merged to main
 
+## Video explanations of each stage of the pipeline
+- [Development environment](https://screenrec.com/share/eBKrk8doDt)
+- [Continuous Integration](https://screenrec.com/share/EJy9Sw0xpR)
+- [Deployment Environment](https://screenrec.com/share/Vk47fZ6lJ8)
+- [CI CD working pipeline](https://screenrec.com/share/26bh1Yl3wG)
