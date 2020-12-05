@@ -68,7 +68,7 @@ Jenkins is one of the more popular CI/CD automation server. In this read me are 
 
 ## New Item for pushing to git branch
 - Now we need to set up a new item that is connected to our repo with an ssh key and a webhook, so that it can continously check for updates.
-- Click on new item (top left, enter your name and choose a freestyle project fr now)
+- Click on new item (top left, enter your name and choose a freestyle project for now)
 
 ![](img/freestyleproject.png)
 
