@@ -21,9 +21,9 @@ sudo npm install pm2 -g
 sudo apt-get install nginx -y
 
 # Make a global variable
-export DB_HOST=192.168.10.148
+export DB_HOST=34.241.15.38
 # set the db host to the same ip as the db in the global variable folder
-echo "export DB_HOST=192.168.10.148" >> ~/.bashrc
+echo "export DB_HOST=34.241.15.38" >> ~/.bashrc
 # export DB_HOST=192.168.10.148
 # source rereads the file, shouldn't need it but it is in here just in case
 source ~/.bashrc
