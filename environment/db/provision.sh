@@ -15,7 +15,7 @@ sudo apt install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-she
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 
 # Make sure the bindIP is 0.0.0.0 using our manual copy of the config file
-cd /Config_Folder
+cd ~/Config_Folder
 sudo cp -f mongod-copy.conf /etc/mongod.conf
 
 # Start MongoDB
