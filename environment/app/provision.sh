@@ -11,7 +11,7 @@ sudo apt-get install git -y
 
 # install nodejs
 sudo apt-get install python-software-properties -y
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install nodejs -y
 
 # install pm2
@@ -38,9 +38,9 @@ pm2 start app.js --update-env
 # copy the synced reverse proxy configuration file to the sites available folder
 sudo cp /home/ubuntu/app/reverse-proxy.conf /etc/nginx/conf.d/reverse-proxy.conf
 # disable the default virtual host
-sudo unlink etc/nginx/sites-enabled/default
+sudo unlink /etc/nginx/sites-enabled/default
 # link the new proxy, setting it as default
 sudo ln -s /etc/nginx/conf.d/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
-sudo rm -rf etc/nginx/sites-enabled/default
+sudo rm -rf /etc/nginx/sites-enabled/default
 # finally, restart the nginx service so the new config takes hold
 sudo systemctl restart nginx
